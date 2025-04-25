@@ -4,3 +4,4 @@ obj/main.o
 obj/game.o
 obj/input.o
 .DS_Store
+obj/player.o
