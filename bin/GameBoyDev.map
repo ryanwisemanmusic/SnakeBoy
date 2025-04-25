@@ -1,26 +1,41 @@
 SUMMARY:
-	ROM0: 205 bytes used / 16179 free
-	WRAM0: 2 bytes used / 4094 free
+	ROM0: 389 bytes used / 15995 free
+	WRAM0: 8 bytes used / 4088 free
 
 ROM0 bank #0:
-	SECTION: $0000-$0042 ($0043 bytes) ["Input Functions"]
-	         $0000 = ReadInput
-	         $0037 = IsKeyPressed
-	         $003d = IsKeyJustPressed
-	SECTION: $0043-$005f ($001d bytes) ["Build Date"]
-	         $0043 = BuildDate
-	EMPTY: $0060-$00ff ($00a0 bytes)
+	SECTION: $0000-$005e ($005f bytes) ["Game Code"]
+	         $0000 = InitGame
+	         $004c = UpdateGame
+	         $004d = CopyData
+	         $0056 = FillMemory
+	SECTION: $005f-$00a1 ($0043 bytes) ["Input Functions"]
+	         $005f = ReadInput
+	         $0096 = IsKeyPressed
+	         $009c = IsKeyJustPressed
+	SECTION: $00a2-$00d7 ($0036 bytes) ["Snake Code"]
+	         $00a2 = InitSnake
+	         $00a9 = InitSnake.initBodyLoop
+	         $00b4 = DrawSnake
+	         $00bf = DrawSnake.drawLoop
+	SECTION: $00d8-$00f7 ($0020 bytes) ["Game Data"]
+	         $00d8 = BackgroundTile
+	         $00e8 = SnakeTile
+	EMPTY: $00f8-$00ff ($0008 bytes)
 	SECTION: $0100-$014f ($0050 bytes) ["Header"]
-	SECTION: $0150-$016c ($001d bytes) ["Entry Point"]
+	SECTION: $0150-$016f ($0020 bytes) ["Entry Point"]
 	         $0150 = EntryPoint
 	         $015e = EntryPoint.gameLoop
-	         $0166 = WaitVBlank
-	EMPTY: $016d-$3fff ($3e93 bytes)
-	TOTAL EMPTY: $3f33 bytes
+	         $0169 = WaitVBlank
+	SECTION: $0170-$018c ($001d bytes) ["Build Date"]
+	         $0170 = BuildDate
+	EMPTY: $018d-$3fff ($3e73 bytes)
+	TOTAL EMPTY: $3e7b bytes
 
 WRAM0 bank #0:
-	SECTION: $c000-$c001 ($0002 bytes) ["Input Variables"]
-	         $c000 = wCurKeys
-	         $c001 = wNewKeys
-	EMPTY: $c002-$cfff ($0ffe bytes)
-	TOTAL EMPTY: $0ffe bytes
+	SECTION: $c000-$c005 ($0006 bytes) ["Snake Data"]
+	         $c000 = wSnakeBody
+	SECTION: $c006-$c007 ($0002 bytes) ["Input Variables"]
+	         $c006 = wCurKeys
+	         $c007 = wNewKeys
+	EMPTY: $c008-$cfff ($0ff8 bytes)
+	TOTAL EMPTY: $0ff8 bytes
