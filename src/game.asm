@@ -49,6 +49,8 @@ InitGame::
     ret
 
 UpdateGame::
+    call HandleInput
+    call UpdateSnake
     ret
 
 CopyData::
