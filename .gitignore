@@ -1,3 +1,6 @@
 assets/.DS_Store
 obj/build_date.o
 obj/main.o
+obj/game.o
+obj/input.o
+.DS_Store
