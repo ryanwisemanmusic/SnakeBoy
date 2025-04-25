@@ -1,14 +1,26 @@
 SUMMARY:
-	ROM0: 127 bytes used / 16257 free
+	ROM0: 205 bytes used / 16179 free
+	WRAM0: 2 bytes used / 4094 free
 
 ROM0 bank #0:
-	SECTION: $0000-$001c ($001d bytes) ["Build Date"]
-	         $0000 = BuildDate
-	EMPTY: $001d-$00ff ($00e3 bytes)
+	SECTION: $0000-$0042 ($0043 bytes) ["Input Functions"]
+	         $0000 = ReadInput
+	         $0037 = IsKeyPressed
+	         $003d = IsKeyJustPressed
+	SECTION: $0043-$005f ($001d bytes) ["Build Date"]
+	         $0043 = BuildDate
+	EMPTY: $0060-$00ff ($00a0 bytes)
 	SECTION: $0100-$014f ($0050 bytes) ["Header"]
-	SECTION: $0150-$0161 ($0012 bytes) ["Entry Point"]
+	SECTION: $0150-$016c ($001d bytes) ["Entry Point"]
 	         $0150 = EntryPoint
-	         $0157 = EntryPoint.gameLoop
-	         $015b = WaitVBlank
-	EMPTY: $0162-$3fff ($3e9e bytes)
-	TOTAL EMPTY: $3f81 bytes
+	         $015e = EntryPoint.gameLoop
+	         $0166 = WaitVBlank
+	EMPTY: $016d-$3fff ($3e93 bytes)
+	TOTAL EMPTY: $3f33 bytes
+
+WRAM0 bank #0:
+	SECTION: $c000-$c001 ($0002 bytes) ["Input Variables"]
+	         $c000 = wCurKeys
+	         $c001 = wNewKeys
+	EMPTY: $c002-$cfff ($0ffe bytes)
+	TOTAL EMPTY: $0ffe bytes
