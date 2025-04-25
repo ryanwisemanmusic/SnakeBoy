@@ -1,41 +1,57 @@
 SUMMARY:
-	ROM0: 389 bytes used / 15995 free
-	WRAM0: 8 bytes used / 4088 free
+	ROM0: 544 bytes used / 15840 free
+	WRAM0: 9 bytes used / 4087 free
 
 ROM0 bank #0:
-	SECTION: $0000-$005e ($005f bytes) ["Game Code"]
-	         $0000 = InitGame
-	         $004c = UpdateGame
-	         $004d = CopyData
-	         $0056 = FillMemory
-	SECTION: $005f-$00a1 ($0043 bytes) ["Input Functions"]
-	         $005f = ReadInput
-	         $0096 = IsKeyPressed
-	         $009c = IsKeyJustPressed
-	SECTION: $00a2-$00d7 ($0036 bytes) ["Snake Code"]
-	         $00a2 = InitSnake
-	         $00a9 = InitSnake.initBodyLoop
-	         $00b4 = DrawSnake
-	         $00bf = DrawSnake.drawLoop
-	SECTION: $00d8-$00f7 ($0020 bytes) ["Game Data"]
-	         $00d8 = BackgroundTile
-	         $00e8 = SnakeTile
-	EMPTY: $00f8-$00ff ($0008 bytes)
+	SECTION: $0000-$0090 ($0091 bytes) ["Snake Movement"]
+	         $0000 = HandleInput
+	         $0015 = HandleInput.notRight
+	         $002a = HandleInput.notLeft
+	         $003f = HandleInput.notUp
+	         $0045 = HandleInput.inputDone
+	         $0045 = HandleInput.notDown
+	         $0046 = HandleInput.moveLoop
+	         $0059 = HandleInput.moveLoopDone
+	         $005d = UpdateSnake
+	         $0070 = UpdateSnake.notRight
+	         $0077 = UpdateSnake.notLeft
+	         $0080 = UpdateSnake.notUp
+	         $0083 = UpdateSnake.directionDone
+	         $008a = UpdateSnake.skipMovement
+	SECTION: $0091-$00f5 ($0065 bytes) ["Game Code"]
+	         $0091 = InitGame
+	         $00dd = UpdateGame
+	         $00e4 = CopyData
+	         $00ed = FillMemory
+	EMPTY: $00f6-$00ff ($000a bytes)
 	SECTION: $0100-$014f ($0050 bytes) ["Header"]
 	SECTION: $0150-$016f ($0020 bytes) ["Entry Point"]
 	         $0150 = EntryPoint
 	         $015e = EntryPoint.gameLoop
 	         $0169 = WaitVBlank
-	SECTION: $0170-$018c ($001d bytes) ["Build Date"]
-	         $0170 = BuildDate
-	EMPTY: $018d-$3fff ($3e73 bytes)
-	TOTAL EMPTY: $3e7b bytes
+	SECTION: $0170-$01b2 ($0043 bytes) ["Input Functions"]
+	         $0170 = ReadInput
+	         $01a7 = IsKeyPressed
+	         $01ad = IsKeyJustPressed
+	SECTION: $01b3-$01ec ($003a bytes) ["Snake Code"]
+	         $01b3 = InitSnake
+	         $01ba = InitSnake.initBodyLoop
+	         $01c9 = DrawSnake
+	         $01d4 = DrawSnake.drawLoop
+	SECTION: $01ed-$020c ($0020 bytes) ["Game Data"]
+	         $01ed = BackgroundTile
+	         $01fd = SnakeTile
+	SECTION: $020d-$0229 ($001d bytes) ["Build Date"]
+	         $020d = BuildDate
+	EMPTY: $022a-$3fff ($3dd6 bytes)
+	TOTAL EMPTY: $3de0 bytes
 
 WRAM0 bank #0:
-	SECTION: $c000-$c005 ($0006 bytes) ["Snake Data"]
+	SECTION: $c000-$c006 ($0007 bytes) ["Snake Data"]
 	         $c000 = wSnakeBody
-	SECTION: $c006-$c007 ($0002 bytes) ["Input Variables"]
-	         $c006 = wCurKeys
-	         $c007 = wNewKeys
-	EMPTY: $c008-$cfff ($0ff8 bytes)
-	TOTAL EMPTY: $0ff8 bytes
+	         $c006 = wSnakeDirection
+	SECTION: $c007-$c008 ($0002 bytes) ["Input Variables"]
+	         $c007 = wCurKeys
+	         $c008 = wNewKeys
+	EMPTY: $c009-$cfff ($0ff7 bytes)
+	TOTAL EMPTY: $0ff7 bytes
