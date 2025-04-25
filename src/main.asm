@@ -19,7 +19,7 @@ SECTION "Header", ROM0[$100]
     DB 0
     DB 0
     DW 0
-    
+
     ds $150 - @, 0
 
 SECTION "Entry Point", ROM0[$150]
@@ -32,11 +32,16 @@ EntryPoint:
     
     ;We then call our first loop
     call WaitVBlank
+    
+    ;We initialize input variables in this section
+    xor a
+    ld [wCurKeys], a
+    ld [wNewKeys], a
 
 ;This is the frameLoop that enables the game to run
 .gameLoop:
-    halt
-    nop 
+    call WaitVBlank
+    call ReadInput 
     jr .gameLoop
 
 WaitVBlank:
