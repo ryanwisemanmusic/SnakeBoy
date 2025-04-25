@@ -30,21 +30,21 @@ EntryPoint:
     ;FFFE is the very top of the stack, we load this into the stack pointer
     ld sp, $FFFE
     
-    ;We then call our first loop
-    call WaitVBlank
-    
     ;We initialize input variables in this section
     xor a
     ld [wCurKeys], a
     ld [wNewKeys], a
+    
+    call InitGame
 
 ;This is the frameLoop that enables the game to run
 .gameLoop:
     call WaitVBlank
-    call ReadInput 
+    call ReadInput
+    call UpdateGame
     jr .gameLoop
 
-WaitVBlank:
+WaitVBlank::
     ;This loads the current scanline into a
     ldh a, [rLY]
     ;This compares against the amount of scanlines the Game Boy has: 144
